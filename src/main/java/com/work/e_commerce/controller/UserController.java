@@ -4,6 +4,7 @@ import com.work.e_commerce.dto.UserResponse;
 import com.work.e_commerce.entity.User;
 import com.work.e_commerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,14 +22,14 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public User save(@RequestBody User user){
+    public ResponseEntity<User> save(@RequestBody User user){
         User savedUser = userService.save(user);
-        return savedUser;
+        return ResponseEntity.ok(savedUser);
     }
     @GetMapping("/")
-    public List<UserResponse> findAll(){
-        return userService.findAll();
-
+    public ResponseEntity<List<UserResponse>> findAll(){
+        List<UserResponse> users = userService.findAll();
+        return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{id}")

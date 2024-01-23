@@ -6,10 +6,13 @@ import com.work.e_commerce.dto.UserResponse;
 import com.work.e_commerce.dto.UserRoleResponse;
 import com.work.e_commerce.entity.Role;
 import com.work.e_commerce.entity.User;
+import com.work.e_commerce.exception.ErrorException;
+import com.work.e_commerce.exception.GlobalErrorHandler;
 import com.work.e_commerce.repository.RoleRepository;
 import com.work.e_commerce.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -44,7 +47,7 @@ public class UserServiceImpl implements UserService{
         if(userOptional.isPresent()){
             return userOptional.get();
         }
-        return null;//TODO exception
+        throw new ErrorException("User not found", HttpStatus.NOT_FOUND);
     }
 
     @Override

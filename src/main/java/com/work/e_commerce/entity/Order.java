@@ -19,8 +19,11 @@ public class Order {
     private int count;
     @Column(name = "product_id")
     private int productId;
-    @Column(name = "user_id")
-    private int userId;
+
     @Column(name = "address_id")
     private int addressId;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
 }

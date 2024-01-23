@@ -1,5 +1,6 @@
 package com.work.e_commerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,8 @@ public class Role {
     private long id;
 
     @Column(name = "role_name")
-    private String roleName;
+    @Enumerated(EnumType.STRING)
+    private RoleName roleName;
     @Column(name = "store_name")
     private String storeName;
     @Column(name = "store_phone")
@@ -30,7 +32,7 @@ public class Role {
     @Column(name = "iban")
     private String iban;
 
-
+    /*
     //bi directional tablolara iki taraftan da erişim
     @ManyToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH} )
     @JoinTable(name = "user_role",schema = "ecommercedb", joinColumns = @JoinColumn(name = "role_id"),inverseJoinColumns = @JoinColumn(name = "user_id"))
@@ -41,6 +43,6 @@ public class Role {
             users = new ArrayList<>();
         }
         users.add(user);
-    }
+    }*/
 
 }

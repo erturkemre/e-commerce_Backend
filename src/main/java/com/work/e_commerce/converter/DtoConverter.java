@@ -31,7 +31,7 @@ public class DtoConverter {
     public static List<RoleResponse> convertToRoleResponseList(List<Role> roles){
         List<RoleResponse> responses = new ArrayList<>();
         roles.forEach(role ->{
-            responses.add(new RoleResponse(role.getId(), role.getRoleName(),role.getStoreName(),role.getStorePhone(),role.getStoreTaxNum(),role.getIban()));
+            responses.add(new RoleResponse(role.getId(), role.getRoleName() ,role.getStoreName(),role.getStorePhone(),role.getStoreTaxNum(),role.getIban()));
         });
         return responses;
     }
@@ -55,11 +55,11 @@ public class DtoConverter {
     public static List<OrderResponse> convertToOrderResponseList(List<Order> orders){
         List<OrderResponse> responses = new ArrayList<>();
         orders.forEach(order ->{
-            responses.add(new OrderResponse(order.getId(),order.getCount(),order.getProductId(),order.getUserId(),order.getAddressId()));
+            responses.add(new OrderResponse(order.getId(),order.getCount(),order.getProductId(),order.getAddressId()));
         });
         return responses;
     }
     public static OrderResponse convertToOrderResponse(Order order){
-        return new OrderResponse(order.getId(),order.getCount(),order.getProductId(),order.getUserId(),order.getAddressId());
+        return new OrderResponse(order.getId(),order.getCount(),order.getProductId(),order.getAddressId());
     }
 }

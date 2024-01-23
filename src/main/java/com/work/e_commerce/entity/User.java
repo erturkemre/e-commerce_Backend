@@ -1,10 +1,10 @@
 package com.work.e_commerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "user",schema = "ecommercedb")
+@Table(name = "user", schema = "ecommercedb")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,7 @@ public class User {
     private String email;
     @Column(name = "password")
     private String password;
+
 
     @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "user")
     private List<Order> orders;

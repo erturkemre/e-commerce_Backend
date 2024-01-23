@@ -18,7 +18,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "CASE WHEN :sort = 'price:asc' THEN p.price END ASC, " +
             "CASE WHEN :sort = 'price:desc' THEN p.price END DESC, " +
             "CASE WHEN :sort = 'rating:asc' THEN p.rating END ASC, " +
-            "CASE WHEN :sort = 'rating:desc' THEN p.rating END DESC")
+            "CASE WHEN :sort = 'rating:desc' THEN p.rating END DESC " +
+            "LIMIT :limit OFFSET :offset")
     List<Product> getFilteredAndSortedProducts(@Param("limit") Integer limit,
                                                        @Param("offset") Integer offset,
                                                        @Param("categoryId") Long categoryId,

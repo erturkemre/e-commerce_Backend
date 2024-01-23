@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public OrderResponse update(Order order) {
         Order updatedOrder = orderRepository.save(order);
-        return new OrderResponse(updatedOrder.getId(), updatedOrder.getProductId(), updatedOrder.getCount(), updatedOrder.getUserId(), updatedOrder.getAddressId());
+        return new OrderResponse(updatedOrder.getId(), updatedOrder.getProductId(), updatedOrder.getCount(), updatedOrder.getAddressId());
     }
 
     @Override

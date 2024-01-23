@@ -4,9 +4,11 @@ import com.work.e_commerce.converter.DtoConverter;
 import com.work.e_commerce.dto.*;
 import com.work.e_commerce.entity.Order;
 import com.work.e_commerce.entity.Product;
+import com.work.e_commerce.exception.ErrorException;
 import com.work.e_commerce.repository.OrderRepository;
 import com.work.e_commerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
         if(optionalProduct.isPresent()){
             return (optionalProduct.get());
         }
-        return null; //TODO exception
+        throw new ErrorException("Product not found", HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -63,7 +65,7 @@ public class ProductServiceImpl implements ProductService{
 
         List<OrderResponse> orderResponses = new ArrayList<>();
         for(Order order1:addedProduct.getOrders()){
-            orderResponses.add(new OrderResponse(order1.getId(),order1.getProductId(),order1.getCount(),order1.getUserId(),order1.getAddressId()));
+            orderResponses.add(new OrderResponse(order1.getId(),order1.getProductId(),order1.getCount(),order1.getAddressId()));
         }
 
 

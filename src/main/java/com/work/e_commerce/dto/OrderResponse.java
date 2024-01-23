@@ -1,4 +1,4 @@
 package com.work.e_commerce.dto;
 
-public record OrderResponse(long id,int count, int productId, int userId, int addressId) {
+public record OrderResponse(long id,int count, int productId, int addressId) {
 }
